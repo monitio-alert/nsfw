@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NSFW Warning</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+            background-color: #222;
+            color: white;
+        }
+        .warning-box {
+            background: #333;
+            padding: 20px;
+            border-radius: 10px;
+            display: inline-block;
+        }
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 18px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .proceed { background: green; color: white; }
+        .go-back { background: red; color: white; }
+    </style>
+</head>
+<body>
+
+    <div class="warning-box">
+        <h2>⚠️ NSFW Warning ⚠️</h2>
+        <p>This link leads to adult or sensitive content. Are you sure you want to proceed?</p>
+        <button class="proceed" onclick="redirect()">Yes, Continue</button>
+        <button class="go-back" onclick="window.history.back()">No, Go Back</button>
+    </div>
+
+    <script>
+        function getQueryParam(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+
+        function redirect() {
+            const targetUrl = getQueryParam('url');
+            if (targetUrl) {
+                window.location.href = targetUrl;
+            } else {
+                alert("Invalid or missing URL!");
+            }
+        }
+    </script>
+
+</body>
+</html>
